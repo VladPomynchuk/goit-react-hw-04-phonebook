@@ -29,6 +29,7 @@ const ContactsList = ({ data, setContacts }) => {
 ContactsList.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     })
