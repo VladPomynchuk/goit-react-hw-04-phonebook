@@ -1,8 +1,7 @@
-// import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { Item, List } from './ContactsList.styled';
 
-const ContactsList = ({ data, handleDelete }) => {
+const ContactsList = ({ data, setContacts }) => {
   return (
     <div>
       <List>
@@ -12,7 +11,9 @@ const ContactsList = ({ data, handleDelete }) => {
               {`${el.name}: ${el.number}`}
               <button
                 onClick={() => {
-                  handleDelete(el.id);
+                  setContacts(prevState =>
+                    prevState.filter(element => element.id !== el.id)
+                  );
                 }}
               >
                 Delete
@@ -32,7 +33,7 @@ ContactsList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  handleDelete: PropTypes.func.isRequired,
+  setContacts: PropTypes.func.isRequired,
 };
 
 export default ContactsList;
